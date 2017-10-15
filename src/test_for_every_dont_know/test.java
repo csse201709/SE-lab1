@@ -74,12 +74,12 @@ public class test {
 			System.out.print("µÚ"+(int)(i+1)+"´Î±éÀú	");
 			lnklst.randomvisit();
 		}
-		//Proba p = new Proba();
-		//p.start();
-		//p.start2();
-		 
 		
 
 		return;
 	}
 }
+//lnklst.shortestroad("to","and");		
+//lnklst.shortestroad("to","seek");	
+//lnklst.shortestroad("seek","to");	
+//lnklst.shortestroad("seek","civilizations");
