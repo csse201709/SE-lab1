@@ -28,13 +28,3 @@ public class Node {
 //number=0;
 //weightnum=new int[nodeLength];
 //weightparent=new String[nodeLength];
-//next=new Node[nodeLength];
-//visitflag=false;
-//visitcount=0;
-//selfvisitcount=0;
-//for(int i=0;i<nodeLength;i++)
-//{
-//	next[i]=null;
-//	weightnum[i]=0;
-//	weightparent[i]="";
-//}

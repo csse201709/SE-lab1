@@ -80,6 +80,4 @@ public class test {
 	}
 }
 //lnklst.shortestroad("to","and");		
-//lnklst.shortestroad("to","seek");	
-//lnklst.shortestroad("seek","to");	
 //lnklst.shortestroad("seek","civilizations");
