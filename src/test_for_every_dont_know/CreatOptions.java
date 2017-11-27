@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class CreatOptions {
-  public static String [] RetrnStringarrays(String localAddress)
+  public static String [] RetrnStringarrays(String localAddress)//¶ÁÈ¡ÎÄ±¾
   {
     String regex="[^\\p{Alpha}]+";
     String wordstmp;

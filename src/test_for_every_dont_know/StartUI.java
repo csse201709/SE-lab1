@@ -37,7 +37,6 @@ public class StartUI implements ActionListener {
     JButton gn1=new JButton("桥接词功能");
     JButton gn2=new JButton("生成文本功能");
     JButton gn3=new JButton("两点最短距离");
-    JButton gn4=new JButton("点到所有点距离");
     JButton gn5=new JButton("随机游走功能");
 
     JTextField from=new JTextField();
@@ -50,9 +49,6 @@ public class StartUI implements ActionListener {
     JTextArea ran_go=new JTextArea();
     JTextField start=new JTextField();
     
-    JTextField start1=new JTextField();//点到其他顶点
-    JTextArea short2=new JTextArea();
-    
     JFrame myframe=new JFrame();
     JPanel mypanel=new JPanel();
     
@@ -62,9 +58,8 @@ public class StartUI implements ActionListener {
     JTextArea short3=new JTextArea();
     
     JPanel pn1=new JPanel();
-//    Graph T=new Graph();
     linkList lnklst=new linkList();
-    JScrollPane jsp3 = new JScrollPane(short2);
+
     
     int height=768-80;
     int width=1366;
@@ -73,7 +68,6 @@ public class StartUI implements ActionListener {
     {
         
         myframe.setSize(1366,768);
-        //myframe.add(pn1);
         pn1.setVisible(false);
         myframe.setVisible(true);
         myframe.add(mypanel);
@@ -100,14 +94,9 @@ public class StartUI implements ActionListener {
         mypanel.add(gn3);
         gn3.setBounds(1366/2-100,height*5/8,200,50);
         
-        gn4.addActionListener(this);
-        mypanel.add(gn4);
-        gn4.setBounds(1366/2-100,height*6/8,200,50);
-        
         gn5.addActionListener(this);
         mypanel.add(gn5);
-        gn5.setBounds(1366/2-100,height*7/8,200,50);
-        
+        gn5.setBounds(1366/2-100,height*6/8,200,50);
         next.addActionListener(this);
         exit.addActionListener(this);
         sure.addActionListener(this);
@@ -117,7 +106,7 @@ public class StartUI implements ActionListener {
         sure4.addActionListener(this);
     }
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+
         if(e.getSource()==jb1)
         {
             JFileChooser jfc=new JFileChooser();
@@ -126,15 +115,7 @@ public class StartUI implements ActionListener {
             File file=jfc.getSelectedFile();
             if(file.isFile())
             {
-                try {
-//                    T = main_1.createDirectedGraph(file.getAbsolutePath());
-//                    main_1.showDirectedGraph(T);
-                  lnklst=StartTest.creatlnklst(CreatOptions.RetrnStringarrays(file.getAbsolutePath()));//功能要求1：创建链表
-                } catch (IOException e1)
-                {
-                    // TODO Auto-generated catch block
-                e1.printStackTrace();
-                }
+                lnklst=StartTest.creatlnklst(CreatOptions.RetrnStringarrays(file.getAbsolutePath()));//功能要求1：创建链表
             }
         }
         else if(e.getSource()==jb2)
@@ -184,7 +165,6 @@ public class StartUI implements ActionListener {
         }
         else if(e.getSource()==sure)
         {
-//            String result=main_1.queryBridgeWords(T,from.getText().toLowerCase(),to.getText().toLowerCase());
           String result=lnklst.searchBridgeWords(from.getText().toLowerCase(),to.getText().toLowerCase());
           bridge_word.setText(result);
         }
@@ -214,7 +194,6 @@ public class StartUI implements ActionListener {
         }
         else if(e.getSource()==sure1)
         {
-//            String result=main_1.generateNewText(T,User_input.getText().toLowerCase());
           String result=lnklst.createNewTxtBasisOfBridgeWords(User_input.getText().toLowerCase());
             word_output.setText(result);
         }
@@ -239,6 +218,7 @@ public class StartUI implements ActionListener {
             next.setBounds(width/2-100,420,200,30);
             next.setVisible(false);
             start.setText(null);
+            start.setVisible(false);
             ran_go.setText(null);
             mypanel.setVisible(false);
             pn1.setVisible(true);
@@ -246,87 +226,14 @@ public class StartUI implements ActionListener {
         }
         else if(e.getSource()==sure2)
         {
-            for(int i=0;i<T.num;i++)
-                for(int j=0;j<T.num;j++)
-                    T.visited[i][j]=0;
+
             java.util.Random r=new java.util.Random();
-            x=(r.nextInt(T.num));
-            start.setText(T.int_to_s.get(""+x));
-            ran_go.setText(null);
-            next.setVisible(true);
-            //String result=main_1.randomWalk(T,start.getText().toLowerCase());
-            //ran_go.setText(result);
+            start.setText(lnklst.randomvisit());
+            start.setVisible(false);
+            ran_go.setText(lnklst.randomvisit());
+
         }
-        else if(e.getSource()==next)
-        {
-            String s=main_1.randgo(T,T.num,x);
-            if(s==null)
-            {
-                ran_go.setText(ran_go.getText()+" No words");
-                next.setVisible(false);
-                return;
-            }
-            ran_go.setText(ran_go.getText()+" "+s);
-            if(!T.s_to_int.containsKey(s))
-            {
-                next.setVisible(false);
-                return;
-            }
-            x=T.s_to_int.get(s);
-        }
-        else if(e.getSource()==gn4)
-        {
-            Label l3=new Label("点到其他个点");
-            l3.setFont(new Font("Dialog",1,25));
-            l3.setBounds(width/2-100,50,300,60);
-            jsp3.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-            jsp3.setBounds(13,10,350,340);
-            
-            start1.setBounds(width/2-100,130,200,30);
-            short2.setBounds(width/2-250,180,500,400);
-            jsp3.setBounds(width/2-250,180,500,400);
-            sure3.setBounds(width/2-100,600,200,30);
-            exit.setBounds(width/2-100,650,200,30);
-            short2.setLineWrap(true);
-            short2.setEditable(false);
-            pn1.add(l3);
-            pn1.add(start1);
-            pn1.add(jsp3);
-            //pn1.add(short2);
-            pn1.add(sure3);
-            pn1.setLayout(null);
-            pn1.add(exit);
-            
-            start1.setText(null);
-            short2.setText(null);
-            mypanel.setVisible(false);
-            pn1.setVisible(true);
-            myframe.add(pn1);
-        }
-        else if(e.getSource()==sure3)
-        {
-            short2.setText("");
-            if(!T.s_to_int.containsKey(start1.getText().toLowerCase()))
-            {
-                short2.setText("there is no such a word!");
-                return;
-            }
-            Stack []result=main_1.all_calcShortestPath(T,start1.getText().toLowerCase());
-            int i=0;
-            while(i<T.num)
-            {
-                if(!result[i].isEmpty())
-                {
-                    short2.setText(short2.getText()+" "+start1.getText().toLowerCase()+" ");
-                    while(!result[i].isEmpty())
-                    {
-                        short2.setText(short2.getText()+(result[i].pop()+" "));
-                    }
-                    short2.setText(short2.getText()+("\n"));
-                }
-                i++;
-            }
-        }
+ 
         else if(e.getSource()==gn3)
         {
             Label l3=new Label("点到点");
@@ -364,23 +271,7 @@ public class StartUI implements ActionListener {
             short1.setText(null);
             Stack stack=new Stack();
             String result="there is no such word!";
-            if(T.s_to_int.containsKey(start2.getText().toLowerCase())&&T.s_to_int.containsKey(end.getText().toLowerCase()))
-            {
-                result=main_1.calcShortestPath(T,start2.getText().toLowerCase(),end.getText().toLowerCase());
-                short3.setText(null);
-                for(int i=0;main_1.arr[i][0]!=-1;i++)
-                {
-                    for(int j=0;main_1.arr[i][j]!=-1;j++)
-                    {
-                        stack.push(T.int_to_s.get(""+main_1.arr[i][j]));
-                    }
-                    while(!stack.isEmpty())
-                    {
-                        short3.setText(short3.getText()+" "+stack.pop());
-                    }
-                    short3.setText(short3.getText()+"\n");
-                }
-            }
+            result=lnklst.shortestroad(start2.getText().toLowerCase(),end.getText().toLowerCase());;
             short1.setText(result);
         }
     }

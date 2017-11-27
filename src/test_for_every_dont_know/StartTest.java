@@ -49,36 +49,37 @@ public class StartTest {
 		String strinput="Seek to explore new and exciting synergies";//输入字符串//Seek to explore strange new life and exciting synergies.
 		String[] strspilt=str1.split(regex);//分割后字符串
 		String [] strArrays=inputwords(localAddress);
-		linkList lnklst=creatlnklst(strArrays);//功能要求1：创建链表
-		
-		lnklst.displaytree();//展示链表
-		System.out.println("================Task 3================");
-		lnklst.searchBridgeWords("explore","worlds");//功能要求3：查询桥接词
-		lnklst.searchBridgeWords("explore","strange");
-		lnklst.searchBridgeWords("explore","happy");
-		lnklst.searchBridgeWords("happy","worlds");
-		lnklst.searchBridgeWords("the","new");
-	     lnklst.searchBridgeWords("happy","hollowend");
-		System.out.println("================Task 4================");
-		lnklst.createNewTxtBasisOfBridgeWords(strinput);//功能要求4：对输入字符串添加桥接词
-		//lnklst.createNewTxtBasisOfBridgeWords("welcome to out strange worlds");//welcome to seek out strange new worlds.
-		lnklst.createNewTxtBasisOfBridgeWords("The java API is  of the  the package, "
-				+ "depending  who built the  you are using.");
-		lnklst.createNewTxtBasisOfBridgeWords("you  a spell over my  and every time I'm  your hand");
-		//									   The java API is part of the  the package, 
-		//		   depending on who built the package you are using.
-		System.out.println("================Task 5================");
-		lnklst.shortestroad("to","new");//功能要求5：查询最短路径
-		lnklst.shortestroad("to","and");		
-		lnklst.shortestroad("to","seek");	
-		lnklst.shortestroad("seek","to");	
-		lnklst.shortestroad("seek","civilizations");
-		System.out.println("================Task 6================");
-		for(int i=0;i<10;i++)//功能要求6：随机遍历
-		{
-			System.out.print("第"+(int)(i+1)+"次遍历	");
-			lnklst.randomvisit();
-		}
+		StartUI tmp=new StartUI();
+//		linkList lnklst=creatlnklst(strArrays);//功能要求1：创建链表
+//		
+//		lnklst.displaytree();//展示链表
+//		System.out.println("================Task 3================");
+//		lnklst.searchBridgeWords("explore","worlds");//功能要求3：查询桥接词
+//		lnklst.searchBridgeWords("explore","strange");
+//		lnklst.searchBridgeWords("explore","happy");
+//		lnklst.searchBridgeWords("happy","worlds");
+//		lnklst.searchBridgeWords("the","new");
+//	     lnklst.searchBridgeWords("happy","hollowend");
+//		System.out.println("================Task 4================");
+//		lnklst.createNewTxtBasisOfBridgeWords(strinput);//功能要求4：对输入字符串添加桥接词
+//		//lnklst.createNewTxtBasisOfBridgeWords("welcome to out strange worlds");//welcome to seek out strange new worlds.
+//		lnklst.createNewTxtBasisOfBridgeWords("The java API is  of the  the package, "
+//				+ "depending  who built the  you are using.");
+//		lnklst.createNewTxtBasisOfBridgeWords("you  a spell over my  and every time I'm  your hand");
+//		//									   The java API is part of the  the package, 
+//		//		   depending on who built the package you are using.
+//		System.out.println("================Task 5================");
+//		lnklst.shortestroad("to","new");//功能要求5：查询最短路径
+//		lnklst.shortestroad("to","and");		
+//		lnklst.shortestroad("to","seek");	
+//		lnklst.shortestroad("seek","to");	
+//		lnklst.shortestroad("seek","civilizations");
+//		System.out.println("================Task 6================");
+//		for(int i=0;i<10;i++)//功能要求6：随机遍历
+//		{
+//			System.out.print("第"+(int)(i+1)+"次遍历	");
+//			lnklst.randomvisit();
+//		}
 		//Proba p = new Proba();
 		//p.start();
 		//p.start2();

@@ -274,7 +274,6 @@ public class linkList {
 		}
 		return rtnS;
 	}//searchBridgeWords
-
 	public String createNewTxtBasisOfBridgeWords(String strinput)//功能4根据bridge word生成新文本
 	{
 		String regex="[^\\p{Alpha}]+";
@@ -362,8 +361,10 @@ public class linkList {
 		return flag;
 		
 	}
-	public void shortestroad(String str1,String str2)//功能需求5：计算两个单词之间的最短路径
+	public String shortestroad(String str1,String str2)//功能需求5：计算两个单词之间的最短路径
 	{
+	  String []rtnSlsttmp=null;
+	  String rtnS=null;
 		Node resultlst[][] = new Node[Node.nodeLength][];
 		for(int i=0;i<Node.nodeLength;i++)
 		{
@@ -437,10 +438,10 @@ public class linkList {
 			int minroadlength=Strlength(resultlst[0]);
 			if(maxofallroads==1)
 			{
-				System.out.println("********The road between “"+str1+"” and “"+str2+"” is:    ");
+			  rtnS=("The road between “"+str1+"” and “"+str2+"” is:    \n");
 			}
 			else{
-				System.out.println("********The "+maxofallroads+" roads between “"+str1+"” and “"+str2+"” are:    ");
+			  rtnS=("The "+maxofallroads+" roads between “"+str1+"” and “"+str2+"” are:    \n");
 			}
 			for(int i=0;i<maxofallroads;i++)
 			{
@@ -448,13 +449,13 @@ public class linkList {
 				{
 					for(int j=0;j<Strlength(resultlst[i]);j++)
 					{
-						System.out.print(resultlst[i][j].data);
+					  rtnS+=(resultlst[i][j].data);
 						if(j!=Strlength(resultlst[i])-1)
 						{
-							System.out.print("->");
+						  rtnS+=("->");
 						}
 						else{
-							System.out.print(".");
+						  rtnS+=(".");
 							//System.out.println();
 						}
 					}
@@ -463,12 +464,12 @@ public class linkList {
 				else{
 					break;
 				}
-				System.out.println();
+				rtnS+="\n";
 			}
 			
 		}
 		else{
-			System.out.println("********There is no road between “"+str1+"” and “"+str2+"”");
+		  rtnS=("There is no road between “"+str1+"” and “"+str2+"”");
 		}
 		for(int i=0;i<Strlength(nodelst);i++)
 		{
@@ -482,13 +483,14 @@ public class linkList {
 		{
 			resultlst[i]=new Node[2*Node.nodeLength];
 		}
-		return;
+		return rtnS;
 		//System.out.println("================Task 5================");
 		
 	}//shortestroad
-	public void randomvisit()
+	public String randomvisit()//随机游走
 	{
 		int randhead,randinttmp;
+		String rtnS = "";
 		randhead=(int)(Math.random()*count);
 		Node randomroot=nodelst[randhead];
 		String randomVisitRoad[]=new String[count*2];
@@ -539,13 +541,13 @@ public class linkList {
 		//System.out.println("================Task 6================");
 		for(int i=0;i<Strlength(randomVisitRoad);i++)
 		{
-			System.out.print(randomVisitRoad[i]);
+		  rtnS+=(randomVisitRoad[i]);
 			if(i!=Strlength(randomVisitRoad)-1)
 			{
-				System.out.print("->");
+			  rtnS+=("->");
 			}
 			else{
-				System.out.println(".");
+			  rtnS+=(".");
 			}
 		}
 		for(int i=0;i<Strlength(nodelst);i++)
@@ -554,6 +556,7 @@ public class linkList {
 			nodelst[i].visitflag=false;
 			nodelst[i].selfvisitcount=0;
 		}
+    return rtnS;
 		
 	}//randomWalk
 }//linkList
