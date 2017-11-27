@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class test {
+public class StartTest {
 	public static linkList creatlnklst(String Strlst[])
 	{
 		linkList lnklst=new linkList();
@@ -17,33 +17,38 @@ public class test {
 		return lnklst;
 	}
 
+	public static String[] inputwords(String localAddress)//通过输入地址，从文件读取文本，返回字符串数组
+	{
+	  String regex="[^\\p{Alpha}]+";
+      String[] strArrays = null;
+     try
+     {
+         FileInputStream fis = new FileInputStream(localAddress);
+         InputStreamReader dis = new InputStreamReader(fis);
+         BufferedReader reader = new BufferedReader(dis);
+         String strSentence="",strtemp;
+          while( (strtemp = reader.readLine()) != null )  
+          {
+              strSentence=strSentence+strtemp;
+          }
+          dis.close();
+         
+          strArrays=strSentence.split(regex);
+         
+      }catch(IOException e)
+      {
+          System.out.println(e);
+      }
+    return strArrays;
+	}
 	public static void main(String[] args) {
-		 String regex="[^\\p{Alpha}]+";
-		 String localAddress="test3.txt";
-		 String wordstmp;
-		 String[] strArrays = null;
-		try
-        {
-            FileInputStream fis = new FileInputStream(localAddress);
-            InputStreamReader dis = new InputStreamReader(fis);
-            BufferedReader reader = new BufferedReader(dis);
-            String strSentence="",strtemp;
-             while( (strtemp = reader.readLine()) != null )  
-             {
-            	 strSentence=strSentence+strtemp;
-             }
-             dis.close();
-            
-             strArrays=strSentence.split(regex);
-            
-         }catch(IOException e)
-         {
-             System.out.println(e);
-         }
+	  String regex="[^\\p{Alpha}]+";
+	    String localAddress="test3.txt";
 		String str1=new String("To @ explore strange new worlds,\r\n" + 
 				"To seek out new life and new civilizations?");
 		String strinput="Seek to explore new and exciting synergies";//输入字符串//Seek to explore strange new life and exciting synergies.
 		String[] strspilt=str1.split(regex);//分割后字符串
+		String [] strArrays=inputwords(localAddress);
 		linkList lnklst=creatlnklst(strArrays);//功能要求1：创建链表
 		
 		lnklst.displaytree();//展示链表

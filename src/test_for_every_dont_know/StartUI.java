@@ -129,7 +129,7 @@ public class StartUI implements ActionListener {
                 try {
 //                    T = main_1.createDirectedGraph(file.getAbsolutePath());
 //                    main_1.showDirectedGraph(T);
-                  lnklst=test.creatlnklst(CreatOptions.RetrnStringarrays(file.getAbsolutePath()));//功能要求1：创建链表
+                  lnklst=StartTest.creatlnklst(CreatOptions.RetrnStringarrays(file.getAbsolutePath()));//功能要求1：创建链表
                 } catch (IOException e1)
                 {
                     // TODO Auto-generated catch block
@@ -242,9 +242,6 @@ public class StartUI implements ActionListener {
             ran_go.setText(null);
             mypanel.setVisible(false);
             pn1.setVisible(true);
-//          JScrollPane sp = new JScrollPane(ran_go);
-//          myframe.getContentPane().add(sp);
-//          sp.setVisible(true);
             myframe.add(pn1);
         }
         else if(e.getSource()==sure2)
@@ -255,12 +252,6 @@ public class StartUI implements ActionListener {
             java.util.Random r=new java.util.Random();
             x=(r.nextInt(T.num));
             start.setText(T.int_to_s.get(""+x));
-//          if(!T.s_to_int.containsKey(start.getText().toLowerCase()))
-//          {
-//              ran_go.setText("no such the word!");
-//              return;
-//          }
-            //x=T.s_to_int.get((start.getText().toLowerCase()));
             ran_go.setText(null);
             next.setVisible(true);
             //String result=main_1.randomWalk(T,start.getText().toLowerCase());

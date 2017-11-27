@@ -14,7 +14,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import test_for_every_dont_know.linkList;
-import test_for_every_dont_know.test;
+import test_for_every_dont_know.StartTest;
 
 public class queryBridgeWordsTest {
   static linkList lnklst=null;
@@ -42,7 +42,7 @@ public class queryBridgeWordsTest {
     {
         System.out.println(e);
     }
-   lnklst=test.creatlnklst(strArrays);
+   lnklst=StartTest.creatlnklst(strArrays);
   }
 
   @AfterClass
