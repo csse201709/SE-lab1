@@ -218,9 +218,10 @@ public class linkList {
 	    File out = new File("E:\\ProgramLanguageOfAll\\myeclipse\\workplace\\SE-test-1\\out." + type);    // Windows
 	    gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), out );
 	}
-	public void searchBridgeWords(String str1,String str2)//功能3查询桥接词
+	public String searchBridgeWords(String str1,String str2)//功能3查询桥接词
 	{
 		int visitnodenum=2*Node.nodeLength,top = 0,findin1,findin2;
+		String rtnS;
 		Node visitlst[]=new Node[visitnodenum];
 		for(int i=0;i<visitnodenum;i++)
 		{
@@ -230,18 +231,18 @@ public class linkList {
 		findin2=indexOfNodeInlst(str2);
 		if(findin1==-1&&findin2==-1)
 		{
-			System.out.println("No “"+str1+"” and “"+str2+"” in the graph"); 
-			return;
+			 rtnS="No “"+str1+"” and “"+str2+"” in the graph"; 
+			return rtnS;
 		}
 		else if(findin1==-1)
 		{
-			System.out.println("No “"+str1+"” in the graph");
-			return;
+		   rtnS=("No “"+str1+"” in the graph");
+			return rtnS;
 		}
 		else if(findin2==-1)
 		{
-			System.out.println("No “"+str2+"” in the graph");
-			return;
+		   rtnS=("No “"+str2+"” in the graph");
+			return rtnS;
 		}
 		visitlst=searchroad(str1,str2,visitlst);//调用路径搜索函数searchroad获得路径数组
 		for(int i=0;i<visitnodenum;i++)
@@ -254,31 +255,32 @@ public class linkList {
 		//System.out.println("================Task 3================");
 		if(top<=2)
 		{
-			System.out.println("No bridge words from "+str1+" to "+str2+"!");
+		   rtnS=("No bridge words from "+str1+" to "+str2+"!");
 		}
 		else
 		{
-			System.out.println("The bridge words from "+ str1+ " to "+ str2+" are: ");
+		   rtnS=("The bridge words from "+ str1+ " to "+ str2+" are: ");
 			for(int i=1;i<top-1;i++)
 			{
-				System.out.print(visitlst[i].data);
+			  rtnS+=visitlst[i].data;
 				if(i!=top-2)
 				{
-					System.out.print(",");
+				  rtnS+=(",");
 				}
 				else{
-					System.out.println(".");
+				  rtnS+=(".");
 				}
 			}
 		}
-		return;
+		return rtnS;
 	}//searchBridgeWords
 
-	public void createNewTxtBasisOfBridgeWords(String strinput)//功能4根据bridge word生成新文本
+	public String createNewTxtBasisOfBridgeWords(String strinput)//功能4根据bridge word生成新文本
 	{
 		String regex="[^\\p{Alpha}]+";
 		String[] strspilt=strinput.split(regex);
 		String[] strout=new String[(int)(10*strspilt.length)];
+		String newworlds=null;
 		for(int i=0;i<strout.length;i++){
 			strout[i]="";
 		}
@@ -319,31 +321,32 @@ public class linkList {
 			}
 		}
 		//System.out.println("================Task 4================");
-		for(int i=0;i<Strlength(strspilt);i++)
-		{
-			System.out.print(strspilt[i]);
-			if(i!=Strlength(strspilt)-1)
-			{
-				System.out.print(" ");
-			}
-			else{
-				System.out.println(".");
-			}
-		}
+//		for(int i=0;i<Strlength(strspilt);i++)
+//		{
+//			System.out.print(strspilt[i]);
+//			if(i!=Strlength(strspilt)-1)
+//			{
+//				System.out.print(" ");
+//			}
+//			else{
+//				System.out.println(".");
+//			}
+//		}
 		for(int i=0;i<Strlength(strout);i++)
 		{
-			System.out.print(strout[i]);
+		  newworlds+=(strout[i]);
 			if(i!=Strlength(strout)-1)
 			{
-				System.out.print(" ");
+			  newworlds+=(" ");
 			}
 			else{
-				System.out.println(".");
+			  newworlds+=(".");
 			}
 		}
 		for(int i=0;i<strout.length;i++){
 			strout[i]="";
 		}
+		return newworlds;
 	}//createNewTxtBasisOfBridgeWords
 	public boolean isallvisited()//判断是否全部被访问过
 	{
