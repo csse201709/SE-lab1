@@ -13,10 +13,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import test_for_every_dont_know.linkList;
-import test_for_every_dont_know.StartTest;
+import test_for_every_dont_know.*;
 
 public class CopyOfqueryBridgeWordsTest2 {
+  
   static linkList lnklst=null;
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
@@ -56,7 +56,7 @@ public class CopyOfqueryBridgeWordsTest2 {
 
   @Test
   public void testSearchBridgeWords() {
-    lnklst.searchBridgeWords("explore","happy");
+    System.out.println(lnklst.searchBridgeWords("explore","happy"));
   }
 
 }

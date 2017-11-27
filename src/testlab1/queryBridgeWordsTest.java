@@ -56,7 +56,7 @@ public class queryBridgeWordsTest {
 
   @Test
   public void testSearchBridgeWords() {
-    lnklst.searchBridgeWords("happy","worlds");
+    System.out.println(lnklst.searchBridgeWords("happy","worlds"));
   }
 
 }

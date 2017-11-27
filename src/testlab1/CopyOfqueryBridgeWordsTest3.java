@@ -56,7 +56,7 @@ public class CopyOfqueryBridgeWordsTest3 {
 
   @Test
   public void testSearchBridgeWords() {
-    lnklst.searchBridgeWords("happy","hollowend");
+    System.out.println(lnklst.searchBridgeWords("happy","hollowend"));
   }
 
 }

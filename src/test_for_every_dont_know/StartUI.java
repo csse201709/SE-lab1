@@ -107,7 +107,7 @@ public class StartUI implements ActionListener {
     }
     public void actionPerformed(ActionEvent e) {
 
-        if(e.getSource()==jb1)
+        if(e.getSource()==jb1)//上传文件创建链表
         {
             JFileChooser jfc=new JFileChooser();
             jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES );
