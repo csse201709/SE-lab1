@@ -19,7 +19,7 @@ public class test {
 
 	public static void main(String[] args) {
 		 String regex="[^\\p{Alpha}]+";
-		 String localAddress="test2.txt";
+		 String localAddress="test3.txt";
 		 String wordstmp;
 		 String[] strArrays = null;
 		try
@@ -52,8 +52,8 @@ public class test {
 		lnklst.searchBridgeWords("explore","strange");
 		lnklst.searchBridgeWords("explore","happy");
 		lnklst.searchBridgeWords("happy","worlds");
-		lnklst.searchBridgeWords("the","assuming");
-		lnklst.searchBridgeWords("package","built");
+		lnklst.searchBridgeWords("the","new");
+	     lnklst.searchBridgeWords("happy","hollowend");
 		System.out.println("================Task 4================");
 		lnklst.createNewTxtBasisOfBridgeWords(strinput);//功能要求4：对输入字符串添加桥接词
 		//lnklst.createNewTxtBasisOfBridgeWords("welcome to out strange worlds");//welcome to seek out strange new worlds.
